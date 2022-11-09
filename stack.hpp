@@ -13,7 +13,14 @@ namespace ENSC251_Lab4 {
 
 	class Stack{
 	public:
-		Stack( );
+		// default constructor
+        	Stack();
+        	//copy constructor
+        	Stack(const Stack &a_stack);
+        	// deconstructor
+        	~Stack();
+
+        	StackFramePtr peek();
 		void push(char the_symbol); 
 		char pop( );
 		bool empty( ) const;
