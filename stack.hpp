@@ -2,29 +2,35 @@
 #ifndef STACK
 #define STACK
 #include <iostream>
-
-namespace ENSC251_Lab4 {
+#include <cstddef>
+#include <cstdlib>
+namespace ENSC251_Lab4{
+	template<class T> 
 	struct StackFrame{ 
-			char data;
+			T data;
 			StackFrame *link; 
+		
 		};
-		typedef StackFrame* StackFramePtr;
 
-
+	template<class T>
 	class Stack{
-	public:
+	public: 
 		// default constructor
         	Stack();
+        	/*
         	//copy constructor
         	Stack(const Stack &a_stack);
         	// deconstructor
         	~Stack();
+			*/
+        	StackFrame<T>* peek();
+			void push(T the_symbol); 
+			T pop( );
+			bool empty( ) const;
+			void printStack();
+	private: 
+			StackFrame<T>* top;
+	};
+}
 
-        	StackFramePtr peek();
-		void push(char the_symbol); 
-		char pop( );
-		bool empty( ) const;
-	private: StackFramePtr top;
-	}
-};
 #endif
