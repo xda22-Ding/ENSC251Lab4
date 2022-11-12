@@ -15,7 +15,7 @@ Stack<T>::Stack(){
 
 //return top pointer
 template<class T>
-StackFrame<T>* Stack<T>::peek(){
+StackFramePtr<T> Stack<T>::peek(){
     return top;
 }
 
@@ -28,8 +28,8 @@ bool Stack<T>::empty() const{
 template<class T>
 T Stack<T>::pop(){
     T result = top->data;
-    StackFrame<T>* temp_node; //have a temp node to replace top node
-    temp_node = top; //
+    StackFramePtr<T> temp_node; //have a temp node to replace top node
+    temp_node = top; 
     top = top->link; 
     return result;
 
@@ -37,23 +37,74 @@ T Stack<T>::pop(){
 
 template<class T>
 void Stack<T>::push(T the_symbol){
-    StackFrame<T>* temp_node; // declare a new node to push to the stack
+    StackFramePtr<T> temp_node; // declare a new node to push to the stack
     temp_node = new StackFrame<T>;
     temp_node->data = the_symbol;
-    StackFrame<T>* old_top;
+    StackFramePtr<T> old_top;
     old_top = top;
     top = temp_node;
     top->link = old_top;
     
 }
 
+//The funciton is recursively push data to the bottom
+//meaning it would do n-1 pop and push for every node pushed in.
+//the time complexity is O(N)
+template<class T>
+void Stack<T>::push_bot(T the_symbol){
+    if(top == NULL){
+        push(the_symbol);
+    }
+    else{
+        StackFramePtr<T> temp_node = peek();
+        T temp_symbol = temp_node->data;
+        pop();
+        push_bot(the_symbol);
+        push(temp_symbol);
+    }
 
+    
+}
 
+//print the whole stack
 template<class T>
 void Stack<T>::printStack(){
-    cout << "Hello, World! " << endl;
-    cout << top->data << endl;
+    StackFramePtr<T> temp_node;
+    temp_node = top;
+    while(temp_node != NULL){
+        cout << temp_node->data << endl;
+        temp_node = temp_node->link;
+
+    }
+}
+
+//The reverse function recursively put the top node to the bottom
+//The reverse will be called n times.
+//Considering the push_bot is O(N), 
+//The time complexity of reverseh is O(N).
+template<class T>
+void Stack<T>::reverseh(){
+    if(!empty()){
+        StackFramePtr<T> temp_node = peek();
+        T temp_symbol = temp_node->data;
+        pop();
+        reverseh();
+        push_bot(temp_symbol);
+    }
 
 }
 
+//the reverse function should return the top value.
+template<class T>
+T Stack<T>::reverse(){
+    reverseh();
+    return top->data;
+
+
 }
+
+
+}
+
+
+

@@ -11,6 +11,8 @@ namespace ENSC251_Lab4{
 			StackFrame *link; 
 		
 		};
+		template<class T>
+		using StackFramePtr = StackFrame<T>*;
 
 	template<class T>
 	class Stack{
@@ -23,13 +25,19 @@ namespace ENSC251_Lab4{
         	// deconstructor
         	~Stack();
 			*/
-        	StackFrame<T>* peek();
+        	StackFramePtr<T> peek();
 			void push(T the_symbol); 
-			T pop( );
-			bool empty( ) const;
+			void push_bot(T the_symbol);
+			T pop();
+			bool empty() const;
 			void printStack();
+			void reverseh();
+			T reverse();
+
+
+
 	private: 
-			StackFrame<T>* top;
+			StackFramePtr<T> top;
 	};
 }
 
