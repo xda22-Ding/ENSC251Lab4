@@ -58,8 +58,8 @@ int main(){
 	Stack<char> sstring2(sstring1);
 	sstring2.reverse();
 	cout << "The palindrome is "<<endl;
-	sstring1.printStack();
 	sstring2.printStack();
+	sstring1.printStack();
 /*
 	cout << "after three poping" << endl;
 	stack1.pop();
