@@ -131,9 +131,8 @@ void Stack<T>::push_bot(T the_symbol){
 
 //print the whole stack
 template<class T>
-void Stack<T>::printStack(){
-    StackFramePtr<T> temp_node;
-    temp_node = top;
+void printStack(Stack<T> s){
+    StackFramePtr<T> temp_node = s.peek();
     while(temp_node != NULL){
         cout << temp_node->data << endl;
         temp_node = temp_node->link;
@@ -165,4 +164,8 @@ T Stack<T>::reverse(){
 
 
 }
+
+
+
+
 }
