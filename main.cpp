@@ -51,7 +51,7 @@ int main(){
 	string a;
 	cout << "please enter a string: "<<endl;
 	cin >> a;
-	for (int i = 0; i < size(a); i++){
+	for (int i = 0; i < a.size(); i++){
 		sstring1.push(a[i]);
 	}
 	
