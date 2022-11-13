@@ -27,9 +27,11 @@ namespace ENSC251_Lab4{
         	~Stack();
 			
 			void operator=(Stack& obj);
-			
+			//find the peak of the stack
         	StackFramePtr<T> peek();
 			void push(T the_symbol); 
+
+			//push a value to the bottom of the stack
 			void push_bot(T the_symbol);
 			T pop();
 			bool empty() const;
