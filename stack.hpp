@@ -33,7 +33,6 @@ namespace ENSC251_Lab4{
 			void push_bot(T the_symbol);
 			T pop();
 			bool empty() const;
-			friend void printStack(Stack s);
 			void reverseh();
 			T reverse();
 
