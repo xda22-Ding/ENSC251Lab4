@@ -11,20 +11,23 @@ namespace ENSC251_Lab4{
 			StackFrame *link; 
 		
 		};
-		template<class T>
-		using StackFramePtr = StackFrame<T>*;
+	template<class T>
+	using StackFramePtr = StackFrame<T>*;
 
 	template<class T>
 	class Stack{
 	public: 
 		// default constructor
+			
         	Stack();
-        	/*
+        	
         	//copy constructor
         	Stack(const Stack &a_stack);
         	// deconstructor
         	~Stack();
-			*/
+			
+			void operator=(Stack& obj);
+			
         	StackFramePtr<T> peek();
 			void push(T the_symbol); 
 			void push_bot(T the_symbol);
@@ -38,6 +41,7 @@ namespace ENSC251_Lab4{
 
 	private: 
 			StackFramePtr<T> top;
+			void stackCopy(StackFramePtr<T> obj);
 	};
 }
 
