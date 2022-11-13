@@ -1,11 +1,9 @@
 #include "stack.hpp"
 #include <iostream>
-#include <cstddef>
-#include <cstdlib>
 using namespace std;
 
-namespace ENSC251_Lab4
-{
+namespace ENSC251_Lab4{
+
 //default constructor
 template<class T>
 Stack<T>::Stack(){
@@ -18,6 +16,71 @@ template<class T>
 StackFramePtr<T> Stack<T>::peek(){
     return top;
 }
+
+
+
+
+template<class T>
+//deconstructor
+Stack<T>::~Stack(){
+    T next;
+    while (! empty()){
+        next = pop();
+    }
+}
+
+template<class T>
+//help function
+void Stack<T>::stackCopy(StackFramePtr<T> a_stack){
+     
+     if (a_stack != NULL) {
+
+        StackFramePtr<T> tempNode = a_stack;
+        
+        // copy the first node
+        StackFramePtr<T> firstNode = new StackFrame<T>();
+        firstNode->data = tempNode->data;
+        //set firstnode as top
+        top = firstNode;
+        //let the previous node equal to firstnode
+        StackFramePtr<T> pastNode = firstNode;
+
+        // copy everything
+        while(tempNode->link != NULL){
+            tempNode = tempNode->link;
+            // create a new node 
+            StackFramePtr<T> newNode = new StackFrame<T>();
+            newNode->data = tempNode->data;
+            pastNode->link = newNode;
+            pastNode = newNode;
+        }
+    
+   }
+}
+template<class T>
+//copy constructor
+
+Stack<T>::Stack(const Stack<T> &obj){
+    StackFramePtr<T> a_stack = obj.top;
+    stackCopy(a_stack);
+}
+
+//operator
+template<class T>
+void Stack<T>::operator=(Stack<T>& obj){
+    //delete first
+    StackFramePtr<T> temp = top;
+    while( top != NULL){
+        temp = top;
+        top = temp->link;
+        delete temp;
+    }
+    
+    //copy
+    stackCopy(obj.top);
+    
+}
+
 
 template<class T>
 bool Stack<T>::empty() const{
@@ -102,9 +165,4 @@ T Stack<T>::reverse(){
 
 
 }
-
-
 }
-
-
-
