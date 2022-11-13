@@ -21,10 +21,10 @@ int main(){
 	sint2 = sint1;
 	sint1.reverse();
 	cout << "Sint 1 after reverse:" << endl;
-	sint1.printStack();
+	printStack(sint1);
 	cout << endl;
 	cout << "Sint 2:"<< endl;
-	sint2.printStack();
+	printStack(sint2);
 	cout << endl;
 
 	//partb
@@ -37,13 +37,13 @@ int main(){
 	sdouble1.push(6.5);
 	
 	cout<<"Sdouble 1: "<< endl;
-	sdouble1.printStack();
+	printStack(sdouble1);
 	cout<< endl;
 
 	Stack<double> sdouble2(sdouble1);
 	sdouble2.reverse();
 	cout << "Sdouble 2 after reversing: " << endl;
-	sdouble2.printStack();
+	printStack(sdouble2);
 	cout<< endl;
 
 	//part c
@@ -51,15 +51,15 @@ int main(){
 	string a;
 	cout << "please enter a string: "<<endl;
 	cin >> a;
-	for (int i = 0; i < a.size(); i++){
+	for (int i = 0; i < size(a); i++){
 		sstring1.push(a[i]);
 	}
 	
 	Stack<char> sstring2(sstring1);
 	sstring2.reverse();
 	cout << "The palindrome is "<<endl;
-	sstring2.printStack();
-	sstring1.printStack();
+	printStack(sstring2);
+	printStack(sstring1);
 /*
 	cout << "after three poping" << endl;
 	stack1.pop();
