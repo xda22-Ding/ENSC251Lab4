@@ -153,6 +153,10 @@ void Stack<T>::reverseh(){
         reverseh();
         push_bot(temp_symbol);
     }
+    else{
+        cout << "The stack is empty!" << endl;
+        //exit(1);
+    }
 
 }
 
