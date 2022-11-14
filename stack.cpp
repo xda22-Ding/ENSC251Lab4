@@ -153,17 +153,19 @@ void Stack<T>::reverseh(){
         reverseh();
         push_bot(temp_symbol);
     }
-    else{
-        cout << "The stack is empty!" << endl;
-        //exit(1);
-    }
 
 }
 
 //the reverse function should return the top value.
 template<class T>
 T Stack<T>::reverse(){
-    reverseh();
+    if(!empty()){
+        reverseh();
+    }
+    else{
+        cout << "The stack is empty!" << endl;
+        exit(1);
+    }
     return top->data;
 
 
